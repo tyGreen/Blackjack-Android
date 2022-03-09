@@ -2,6 +2,7 @@ package ca.nscc.blackjack.ui.home;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,11 +49,14 @@ public class HomeFragment extends Fragment {
         View root = binding.getRoot();
 
         // VARIABLE INITIALIZATIONS:
-        cLayout = (ConstraintLayout) root.findViewById(R.id.bg_home);
+        cLayout = (ConstraintLayout) root.findViewById(R.id.cl_home);
+        cLayout.setBackgroundResource(R.drawable.img_bg);
 
         lbl_enterName = (TextView) root.findViewById(R.id.lbl_enterName);
         txtbx_enterName = (EditText) root.findViewById(R.id.txtbx_enterName);
         btn_submitName = (Button) root.findViewById(R.id.btn_submitName);
+        btn_submitName.setBackgroundColor(Color.RED);
+        btn_submitName.getBackground().setAlpha(192);
 
         prefs = getActivity().getSharedPreferences("game_data", Context.MODE_PRIVATE);
 

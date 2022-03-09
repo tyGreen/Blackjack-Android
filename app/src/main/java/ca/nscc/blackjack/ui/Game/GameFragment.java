@@ -2,6 +2,7 @@ package ca.nscc.blackjack.ui.Game;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -31,6 +33,7 @@ public class GameFragment extends Fragment {
 
     // VARIABLE DECLARATIONS
     // GUI:
+    ConstraintLayout cl;
     TextView lbl_pScore, lbl_hScore, lbl_pHand, lbl_hHand, lbl_pHandVal, lbl_hHandVal, lbl_pScoreVal, lbl_hScoreVal;
     ImageView pCard1, pCard2, pCard3, pCard4, pCard5, hCard1, hCard2, hCard3, hCard4, hCard5;
     Button btn_start, btn_hit, btn_stay;
@@ -53,6 +56,10 @@ public class GameFragment extends Fragment {
 
         binding = FragmentGameBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        // Set background image of constraint layout
+         cl = (ConstraintLayout) root.findViewById(R.id.cl_game);
+         cl.setBackgroundResource(R.drawable.img_bg);
 
         // VARIABLE INITIALIZATIONS
         // Players
@@ -98,9 +105,15 @@ public class GameFragment extends Fragment {
         lbl_hHandVal = (TextView) root.findViewById(R.id.lbl_hHandVal);
         // Buttons
         btn_start = (Button) root.findViewById(R.id.btn_start);
+        btn_start.setBackgroundColor(Color.RED);
+        btn_start.getBackground().setAlpha(192);
         btn_hit = (Button) root.findViewById(R.id.btn_hit);
+        btn_hit.setBackgroundColor(Color.RED);
+        btn_hit.getBackground().setAlpha(192);
         btn_hit.setEnabled(false); // Hit btn disabled til game starts
         btn_stay = (Button) root.findViewById(R.id.btn_stay);
+        btn_stay.setBackgroundColor(Color.RED);
+        btn_stay.getBackground().setAlpha(192);
         btn_stay.setEnabled(false); // Stay btn disabled til game starts
         // Shared preferences
         prefs = getActivity().getSharedPreferences("game_data", Context.MODE_PRIVATE);
